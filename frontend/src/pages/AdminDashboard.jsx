@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Droplet, Clock, Truck, Users, BarChart3 } from 'lucide-react';
 import InteractiveMap from '../components/InteractiveMap';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function AdminDashboard() {
   const [requests, setRequests] = useState([]);
   const [userCount, setUserCount] = useState(0);
@@ -14,7 +16,7 @@ export default function AdminDashboard() {
     const token = localStorage.getItem('simba_token');
     try {
       // Fetch all requests
-      const reqRes = await fetch('https://simba-production-b7a4.up.railway.app/api/dashboard/track/1', {
+      const reqRes = await fetch(`${API_URL}/api/requests/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!reqRes.ok) throw new Error('Gagal mengambil data pengajuan.');
@@ -22,7 +24,7 @@ export default function AdminDashboard() {
       setRequests(reqData);
 
       // Fetch all users to count
-      const userRes = await fetch('https://simba-production-b7a4.up.railway.app/api/dashboard/track/1', {
+      const userRes = await fetch(`${API_URL}/api/users`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (userRes.ok) {

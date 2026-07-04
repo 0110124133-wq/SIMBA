@@ -4,6 +4,8 @@ import { Droplet, Calendar, Truck, MapPin, Eye, Clock, X } from 'lucide-react';
 import StatusBadge from '../components/StatusBadge';
 import RouteMap from '../components/RouteMap';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function UserDashboard() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,7 @@ export default function UserDashboard() {
   const fetchUserRequests = async () => {
     try {
       const token = localStorage.getItem('simba_token');
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/dashboard/track/1', {
+      const response = await fetch(`${API_URL}/api/requests/user`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -243,7 +245,7 @@ export default function UserDashboard() {
               <div style={{ marginBottom: '1rem' }}>
                 <label>Foto Bukti Dokumentasi</label>
                 <img 
-                  src={selectedRequest.image_url.startsWith('data:') ? selectedRequest.image_url : `http://localhost:5000${selectedRequest.image_url}`} 
+                  src={selectedRequest.image_url.startsWith('data:') ? selectedRequest.image_url : `${API_URL}${selectedRequest.image_url}`} 
                   alt="Dokumentasi Kekeringan" 
                   style={{ width: '100%', maxHeight: '220px', objectFit: 'cover', borderRadius: '6px', border: '1px solid var(--border-color)', marginTop: '0.25rem' }}
                 />

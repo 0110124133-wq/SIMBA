@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Droplet, Search, ShieldCheck, MapPin, Calendar, Truck, ArrowRight } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function LandingPage() {
   const [searchId, setSearchId] = useState('');
   const [trackResult, setTrackResult] = useState(null);
@@ -17,7 +19,7 @@ export default function LandingPage() {
     setTrackResult(null);
 
     try {
-      const response = await fetch(`https://simba-production-b7a4.up.railway.app/api/Landingpage/track/1:/${searchId}`, {
+      const response = await fetch(`${API_URL}/api/requests/track/${searchId}`, {
         headers: {
           // Send a dummy authorization header, but wait: the backend allows public tracking?
           // If the backend check says admin or owner, it returns 403.

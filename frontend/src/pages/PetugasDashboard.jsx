@@ -15,6 +15,8 @@ import {
 import StatusBadge from '../components/StatusBadge';
 import RouteMap from '../components/RouteMap';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function PetugasDashboard() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,10 +32,10 @@ export default function PetugasDashboard() {
   const fetchAssignedRequests = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/dashboard/track/1', {
+      const response = await fetch(`${API_URL}/api/requests/petugas`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      if (!response.ok) throw new Error('Gagal mengambil data tugas petugas.');
+      if (!response.ok) throw new Error('Gagal mengambil data data tugas petugas.');
       const data = await response.json();
       setRequests(data);
     } catch (err) {
@@ -65,7 +67,7 @@ export default function PetugasDashboard() {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`https://simba-production-b7a4.up.railway.app/api/requests/track/1${selectedRequest.id}/status`, {
+      const response = await fetch(`${API_URL}/api/requests/${selectedRequest.id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

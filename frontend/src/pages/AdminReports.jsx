@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FileSpreadsheet, Printer, Filter, Droplet } from 'lucide-react';
 import StatusBadge from '../components/StatusBadge';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function AdminReports({ currentUser }) {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ export default function AdminReports({ currentUser }) {
   const fetchReportsData = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/adminreports/track/1', {
+      const response = await fetch(`${API_URL}/api/requests/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil data laporan.');

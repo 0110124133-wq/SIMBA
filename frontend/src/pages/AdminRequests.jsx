@@ -4,6 +4,8 @@ import { Eye, Trash2, Clock, X, User, Droplets, MapPin, Truck, ShieldCheck } fro
 import StatusBadge from '../components/StatusBadge';
 import RouteMap from '../components/RouteMap';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function AdminRequests() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [requests, setRequests] = useState([]);
@@ -26,7 +28,7 @@ export default function AdminRequests() {
   const fetchRequests = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
+      const response = await fetch(`${API_URL}/api/requests/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil data pengajuan.');
@@ -51,7 +53,7 @@ export default function AdminRequests() {
   const fetchPetugas = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
+      const response = await fetch(`${API_URL}/api/users`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -91,7 +93,7 @@ export default function AdminRequests() {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`https://simba-production-b7a4.up.railway.app/api/adminrequest/track/1${selectedRequest.id}/status`, {
+      const response = await fetch(`${API_URL}/api/requests/${selectedRequest.id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +154,7 @@ export default function AdminRequests() {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`https://simba-production-b7a4.up.railway.app/api/requests/track/1${id}`, {
+      const response = await fetch(`${API_URL}/api/requests/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -342,7 +344,7 @@ export default function AdminRequests() {
                   Foto Bukti Kondisi
                 </h4>
                 <img 
-                  src={`https://simba-production-b7a4.up.railway.app/api/requests/track/1${selectedRequest.image_url}`} 
+                  src={selectedRequest.image_url.startsWith('data:') ? selectedRequest.image_url : `${API_URL}${selectedRequest.image_url}`} 
                   alt="Kondisi Kekeringan" 
                   style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '6px', border: '1px solid var(--border-color)' }}
                 />

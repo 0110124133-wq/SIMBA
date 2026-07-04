@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { User, Phone, MapPin, Lock, Save } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function Profile({ onProfileUpdate }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,7 +20,7 @@ export default function Profile({ onProfileUpdate }) {
   const fetchProfile = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
+      const response = await fetch(`${API_URL}/api/auth/profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil profil.');
@@ -57,7 +59,7 @@ export default function Profile({ onProfileUpdate }) {
         body.password = password;
       }
 
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/profil/track/1', {
+      const response = await fetch(`${API_URL}/api/auth/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

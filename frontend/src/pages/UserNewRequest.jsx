@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Droplet, MapPin, Upload, FileText, ArrowLeft } from 'lucide-react';
 import InteractiveMap from '../components/InteractiveMap';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const KECAMATAN_DEPOK = [
   'Pancoran Mas',
   'Beji',
@@ -66,7 +68,7 @@ export default function UserNewRequest() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/requests', {
+      const response = await fetch(`${API_URL}/api/requests`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
