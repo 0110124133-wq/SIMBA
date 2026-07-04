@@ -20,7 +20,7 @@ export default function AdminUsers({ currentUser }) {
   const fetchUsers = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil data user.');
@@ -45,7 +45,7 @@ export default function AdminUsers({ currentUser }) {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export default function AdminUsers({ currentUser }) {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${id}`, {
+      const response = await fetch(`https://simba-production-b7a4.up.railway.app/api/requests/track/1${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

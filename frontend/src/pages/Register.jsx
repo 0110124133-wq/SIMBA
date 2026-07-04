@@ -25,7 +25,7 @@ export default function Register() {
     setSuccess('');
 
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone, password, address })

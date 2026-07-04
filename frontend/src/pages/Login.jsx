@@ -20,7 +20,7 @@ export default function Login({ onLoginSuccess }) {
     setError('');
 
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1://simba-production-b7a4.up.railway.app/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

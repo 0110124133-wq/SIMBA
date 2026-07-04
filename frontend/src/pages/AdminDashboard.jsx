@@ -14,7 +14,7 @@ export default function AdminDashboard() {
     const token = localStorage.getItem('simba_token');
     try {
       // Fetch all requests
-      const reqRes = await fetch('https://simba-production-b7a4.up.railway.app/', {
+      const reqRes = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!reqRes.ok) throw new Error('Gagal mengambil data pengajuan.');
@@ -22,7 +22,7 @@ export default function AdminDashboard() {
       setRequests(reqData);
 
       // Fetch all users to count
-      const userRes = await fetch('https://simba-production-b7a4.up.railway.app/', {
+      const userRes = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (userRes.ok) {
