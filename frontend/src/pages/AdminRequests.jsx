@@ -91,7 +91,7 @@ export default function AdminRequests() {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${selectedRequest.id}/api/status`, {
+      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${selectedRequest.id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

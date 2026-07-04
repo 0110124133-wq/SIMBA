@@ -38,9 +38,9 @@ export default function Login({ onLoginSuccess }) {
       onLoginSuccess(data.user);
 
       if (data.user.role === 'admin') {
-        navigate('/api/admin/dashboard');
+        navigate('/admin/dashboard');
       } else {
-        navigate('/api/user/dashboard');
+        navigate('/user/dashboard');
       }
     } catch (err) {
       setError(err.message);
@@ -101,7 +101,7 @@ export default function Login({ onLoginSuccess }) {
         </form>
 
         <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-          Belum punya akun? <Link to="/api/register" style={{ color: 'var(--primary)', fontWeight: 'bold' }}>Daftar disini</Link>
+          Belum punya akun? <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 'bold' }}>Daftar disini</Link>
         </div>
         <div style={{ marginTop: '0.75rem', textAlign: 'center', fontSize: '0.85rem' }}>
           <Link to="/" style={{ color: 'var(--text-muted)' }}>Kembali ke Beranda</Link>

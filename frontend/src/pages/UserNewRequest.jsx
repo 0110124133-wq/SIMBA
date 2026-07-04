@@ -79,7 +79,7 @@ export default function UserNewRequest() {
         throw new Error(data.message || 'Gagal mengirim pengajuan.');
       }
 
-      navigate('/api/user/dashboard');
+      navigate('/user/dashboard');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -92,7 +92,7 @@ export default function UserNewRequest() {
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
         <button 
           className="btn btn-outline" 
-          onClick={() => navigate('/api/user/dashboard')}
+          onClick={() => navigate('/user/dashboard')}
           style={{ padding: '0.5rem 0.75rem' }}
         >
           <ArrowLeft size={16} /> Kembali
@@ -226,7 +226,7 @@ export default function UserNewRequest() {
           <button 
             type="button" 
             className="btn btn-outline" 
-            onClick={() => navigate('/api/user/dashboard')}
+            onClick={() => navigate('/user/dashboard')}
             disabled={loading}
           >
             Batal
