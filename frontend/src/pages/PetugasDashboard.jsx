@@ -30,7 +30,7 @@ export default function PetugasDashboard() {
   const fetchAssignedRequests = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/requests/track/1', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/api/dashboard/track/1', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil data tugas petugas.');
