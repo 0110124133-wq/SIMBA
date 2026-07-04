@@ -1,0 +1,17 @@
+# Backend Dependencies
+node_modules/
+
+# Database file
+simba.db
+simba.db-journal
+
+# Environment config
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Uploads directory (optional, if uploads are user-specific and shouldn't be tracked)
+# uploads/
