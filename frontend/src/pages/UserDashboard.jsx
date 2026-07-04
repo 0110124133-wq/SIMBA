@@ -13,7 +13,7 @@ export default function UserDashboard() {
   const fetchUserRequests = async () => {
     try {
       const token = localStorage.getItem('simba_token');
-      const response = await fetch('http://localhost:5000/api/requests/user', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

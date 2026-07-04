@@ -20,7 +20,7 @@ export default function AdminUsers({ currentUser }) {
   const fetchUsers = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil data user.');

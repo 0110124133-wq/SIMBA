@@ -14,7 +14,7 @@ export default function AdminDashboard() {
     const token = localStorage.getItem('simba_token');
     try {
       // Fetch all requests
-      const reqRes = await fetch('http://localhost:5000/api/requests/all', {
+      const reqRes = await fetch('https://simba-production-b7a4.up.railway.app/', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!reqRes.ok) throw new Error('Gagal mengambil data pengajuan.');

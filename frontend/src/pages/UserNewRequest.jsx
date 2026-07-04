@@ -66,7 +66,7 @@ export default function UserNewRequest() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/requests', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

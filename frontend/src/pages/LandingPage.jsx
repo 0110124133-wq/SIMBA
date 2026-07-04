@@ -17,7 +17,7 @@ export default function LandingPage() {
     setTrackResult(null);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/requests/${searchId}`, {
+      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${searchId}`, {
         headers: {
           // Send a dummy authorization header, but wait: the backend allows public tracking?
           // If the backend check says admin or owner, it returns 403.
