@@ -26,14 +26,14 @@ function MainLayout({ user, onLogout, onProfileUpdate }) {
     setSidebarOpen(false);
   };
 
-  const isPublicPath = ['/', '/api/login', '/api/register'].includes(location.pathname);
+  const isPublicPath = ['/', '/login', '/register'].includes(location.pathname);
 
   if (isPublicPath || !user) {
     return (
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/api/login" element={<Login onLoginSuccess={onProfileUpdate} />} />
-        <Route path="/api/register" element={<Register />} />
+        <Route path="/login" element={<Login onLoginSuccess={onProfileUpdate} />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
