@@ -57,7 +57,7 @@ export default function Profile({ onProfileUpdate }) {
         body.password = password;
       }
 
-      const response = await fetch('http://localhost:5000/api/auth/profile', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

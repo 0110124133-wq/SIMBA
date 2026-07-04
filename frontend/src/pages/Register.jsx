@@ -147,7 +147,7 @@ export default function Register() {
         </form>
 
         <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-          Sudah punya akun? <Link to="/login" style={{ color: 'var(--primary)', fontWeight: 'bold' }}>Masuk disini</Link>
+          Sudah punya akun? <Link to="/api/login" style={{ color: 'var(--primary)', fontWeight: 'bold' }}>Masuk disini</Link>
         </div>
         <div style={{ marginTop: '0.75rem', textAlign: 'center', fontSize: '0.85rem' }}>
           <Link to="/" style={{ color: 'var(--text-muted)' }}>Kembali ke Beranda</Link>

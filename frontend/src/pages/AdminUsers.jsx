@@ -45,7 +45,7 @@ export default function AdminUsers({ currentUser }) {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export default function AdminUsers({ currentUser }) {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

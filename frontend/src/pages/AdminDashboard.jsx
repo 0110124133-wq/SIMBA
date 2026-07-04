@@ -22,7 +22,7 @@ export default function AdminDashboard() {
       setRequests(reqData);
 
       // Fetch all users to count
-      const userRes = await fetch('http://localhost:5000/api/users', {
+      const userRes = await fetch('https://simba-production-b7a4.up.railway.app/', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (userRes.ok) {
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="card-stat" style={{ cursor: 'pointer' }} onClick={() => navigate('/admin/requests')}>
+            <div className="card-stat" style={{ cursor: 'pointer' }} onClick={() => navigate('/api/admin/requests')}>
               <div className="stat-info">
                 <h3>Sedang Dikirim</h3>
                 <div className="stat-value">{stats.distributing}</div>
@@ -107,7 +107,7 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="card-stat" style={{ cursor: 'pointer' }} onClick={() => navigate('/admin/users')}>
+            <div className="card-stat" style={{ cursor: 'pointer' }} onClick={() => navigate('/api/admin/users')}>
               <div className="stat-info">
                 <h3>Total Pengguna</h3>
                 <div className="stat-value">{userCount}</div>
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
               <InteractiveMap 
                 mode="admin-multi" 
                 requests={requests} 
-                onMarkerClick={(req) => navigate(`/admin/requests?id=${req.id}`)}
+                onMarkerClick={(req) => navigate(`/api/admin/requests?id=${req.id}`)}
               />
             </div>
 

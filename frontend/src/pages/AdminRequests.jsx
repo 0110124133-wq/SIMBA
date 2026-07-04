@@ -51,7 +51,7 @@ export default function AdminRequests() {
   const fetchPetugas = async () => {
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch('https://simba-production-b7a4.up.railway.app/', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -91,7 +91,7 @@ export default function AdminRequests() {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`http://localhost:5000/api/requests/${selectedRequest.id}/status`, {
+      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${selectedRequest.id}/api/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ export default function AdminRequests() {
 
     const token = localStorage.getItem('simba_token');
     try {
-      const response = await fetch(`http://localhost:5000/api/requests/${id}`, {
+      const response = await fetch(`https://simba-production-b7a4.up.railway.app/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -342,7 +342,7 @@ export default function AdminRequests() {
                   Foto Bukti Kondisi
                 </h4>
                 <img 
-                  src={`http://localhost:5000${selectedRequest.image_url}`} 
+                  src={`https://simba-production-b7a4.up.railway.app/${selectedRequest.image_url}`} 
                   alt="Kondisi Kekeringan" 
                   style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '6px', border: '1px solid var(--border-color)' }}
                 />

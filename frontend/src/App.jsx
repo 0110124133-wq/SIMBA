@@ -26,14 +26,14 @@ function MainLayout({ user, onLogout, onProfileUpdate }) {
     setSidebarOpen(false);
   };
 
-  const isPublicPath = ['/', '/login', '/register'].includes(location.pathname);
+  const isPublicPath = ['/', '/api/login', '/api/register'].includes(location.pathname);
 
   if (isPublicPath || !user) {
     return (
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login onLoginSuccess={onProfileUpdate} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/api/login" element={<Login onLoginSuccess={onProfileUpdate} />} />
+        <Route path="/api/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
@@ -57,33 +57,33 @@ function MainLayout({ user, onLogout, onProfileUpdate }) {
         
         <Routes>
           {/* Shared protected */}
-          <Route path="/profile" element={<Profile onProfileUpdate={onProfileUpdate} />} />
+          <Route path="/api/profile" element={<Profile onProfileUpdate={onProfileUpdate} />} />
 
           {/* User routes */}
           {isUser && (
             <>
-              <Route path="/user/dashboard" element={<UserDashboard />} />
-              <Route path="/user/new-request" element={<UserNewRequest />} />
-              <Route path="*" element={<Navigate to="/user/dashboard" replace />} />
+              <Route path="/api/user/dashboard" element={<UserDashboard />} />
+              <Route path="/api/user/new-request" element={<UserNewRequest />} />
+              <Route path="*" element={<Navigate to="/api/user/dashboard" replace />} />
             </>
           )}
 
           {/* Petugas routes */}
           {isPetugas && (
             <>
-              <Route path="/petugas/dashboard" element={<PetugasDashboard />} />
-              <Route path="*" element={<Navigate to="/petugas/dashboard" replace />} />
+              <Route path="/api/petugas/dashboard" element={<PetugasDashboard />} />
+              <Route path="*" element={<Navigate to="/api/petugas/dashboard" replace />} />
             </>
           )}
 
           {/* Admin routes */}
           {isAdmin && (
             <>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/requests" element={<AdminRequests />} />
-              <Route path="/admin/users" element={<AdminUsers currentUser={user} />} />
-              <Route path="/admin/reports" element={<AdminReports currentUser={user} />} />
-              <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+              <Route path="/api/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/api/admin/requests" element={<AdminRequests />} />
+              <Route path="/api/admin/users" element={<AdminUsers currentUser={user} />} />
+              <Route path="/api/admin/reports" element={<AdminReports currentUser={user} />} />
+              <Route path="*" element={<Navigate to="/api/admin/dashboard" replace />} />
             </>
           )}
         </Routes>
